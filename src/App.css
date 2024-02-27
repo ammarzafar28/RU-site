@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.custom-button {
+  border: solid;
+  border-radius: 50px;
+  margin-right: 10px;
+  background-color: #99ccff; /* Example default color */
+  color: white; /* Example default text color */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  margin-left: 10px;
+  margin-right: 10px;
+  height: auto;
+  width: 100px;
+}
+
+.custom-button:hover {
+  background-color: #7aa3cc; /* Change to the desired color */
+  color: #ffffff; /* Change text color if necessary */
+}
+
+.custom-footer-paragraph {
+  width: 25%;
+}

@@ -25,19 +25,6 @@ export const ContactPage = () => {
         textAlign: 'center', // This centers the text of the h1
     };
 
-    /*
-    const formStyle: React.CSSProperties = {
-        border: '1px solid #000', 
-        padding: '20px',         
-        margin: '20px',           
-        borderRadius: '5px',      
-        backgroundColor: '#fff',  
-        maxWidth: '500px',        
-        marginLeft: 'auto',       
-        marginRight: 'auto'
-    };
-    */
-
     return (
         <div>
             <div>
@@ -47,7 +34,7 @@ export const ContactPage = () => {
             </div>
             <div style={containerStyle} className='justify-content-center align-items-center'>
                 <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '500px', border: '1px solid #000', padding: '20px', margin: '20px', borderRadius: '5px',
-                backgroundColor: '#fff', marginLeft: 'auto', marginRight: 'auto' }}>
+                backgroundColor: '#F2F3F4', marginLeft: 'auto', marginRight: 'auto' }}>
                     <div className="form-group mt-5">
                         <p>Name</p>
                         <label style={{ marginBottom: '0' }} htmlFor="name"></label>
@@ -60,7 +47,7 @@ export const ContactPage = () => {
                             required
                         />
                     </div>
-                    <div className="form-group mt-5">
+                    <div className="form-group mt-3">
                         <p>Email</p>
                         <label style={{ marginBottom: '0' }} htmlFor="email"></label>
                         <input
@@ -72,7 +59,7 @@ export const ContactPage = () => {
                             required
                         />
                     </div>
-                    <div className="form-group mt-5">
+                    <div className="form-group mt-3">
                         <p>Question</p>
                         <label style={{ marginBottom: '0' }} htmlFor="question"></label>
                         <textarea
@@ -83,7 +70,7 @@ export const ContactPage = () => {
                             required
                         />
                     </div>
-                    <button type="submit">Submit</button>
+                    <button className='custom-button mt-3' type="submit">Submit</button>
                 </form>
             </div>
         </div>

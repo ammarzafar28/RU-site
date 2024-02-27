@@ -6,6 +6,7 @@ import { Footer } from './Layouts/NavbarAndFooter/Footer';
 import { ProgramsAndServicesPage } from './Layouts/ProgramsAndServicesPage/ProgramsAndServicesPage';
 import { ContactPage } from './Layouts/ContactPage/ContactPage';
 import { AboutPage } from './Layouts/AboutPage/AboutPage';
+import { GetInvolvedPage } from './Layouts/GetInvolvedPage/GetInvolvedPage';
 
 function App() {
   return (
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route path="/about">
             <AboutPage />
+          </Route>
+          <Route path="/getinvolved">
+            <GetInvolvedPage />
           </Route>
         </Switch>
       </div>
