@@ -1,78 +1,69 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const ContactPage = () => {
-    // State for form inputs
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [question, setQuestion] = useState('');
+  const form = useRef<HTMLFormElement>(null);
+  const [successMessage, setSuccessMessage] = useState('');
 
-    // Function to handle form submission
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        alert(`Name: ${name}, Email: ${email}, Question: ${question}`);
-        setName('');
-        setEmail('');
-        setQuestion('');
-    };
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    // Correctly typed style object for the container
-    const containerStyle: React.CSSProperties = {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: '100%', // This uses the full height of the viewport
-        textAlign: 'center', // This centers the text of the h1
-    };
+    if (!form.current) {
+      console.error('Form reference is missing.');
+      return;
+    }
 
-    return (
-        <div>
-            <div>
-                <h1 className='mt-3 text-center'>Contact Us</h1>
-                <h3 className='mt-2 text-center'>We are on social media too!</h3>
-                <p className='text-center'>INSERT SM LINKS HERE</p>
-            </div>
-            <div style={containerStyle} className='justify-content-center align-items-center'>
-                <form onSubmit={handleSubmit} style={{ width: '100%', maxWidth: '500px', border: '1px solid #000', padding: '20px', margin: '20px', borderRadius: '5px',
-                backgroundColor: '#F2F3F4', marginLeft: 'auto', marginRight: 'auto' }}>
-                    <div className="form-group mt-5">
-                        <p>Name</p>
-                        <label style={{ marginBottom: '0' }} htmlFor="name"></label>
-                        <input
-                            type="text"
-                            id="name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder='name'
-                            required
-                        />
-                    </div>
-                    <div className="form-group mt-3">
-                        <p>Email</p>
-                        <label style={{ marginBottom: '0' }} htmlFor="email"></label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            placeholder='email'
-                            required
-                        />
-                    </div>
-                    <div className="form-group mt-3">
-                        <p>Question</p>
-                        <label style={{ marginBottom: '0' }} htmlFor="question"></label>
-                        <textarea
-                            id="question"
-                            value={question}
-                            onChange={(e) => setQuestion(e.target.value)}
-                            placeholder='type your question here'
-                            required
-                        />
-                    </div>
-                    <button className='custom-button mt-3' type="submit">Submit</button>
-                </form>
-            </div>
+    emailjs
+      .sendForm(
+        'contact_service',
+        'contact_form',
+        form.current,
+        'uTu7q_DNAHHr3421H',
+      )
+      .then(
+        () => {
+          console.log('SUCCESS!');
+          setSuccessMessage('Your message has been sent successfully!');
+          form.current!.reset();  // Clear the form fields
+          setTimeout(() => setSuccessMessage(''), 3000);  // Clear the success message after 5 seconds
+        },
+        (error) => {
+          console.error('FAILED...', error.text);
+        },
+      );
+  };
+
+  return (
+    <div className="container mt-5 mb-5">
+      <h1 className='mt-5 mb-5 text-center'>Contact Us</h1>
+      <h3 className='mt-5 mb-5 text-center'>We are on social media too!</h3>
+      {successMessage && (
+        <div className="alert alert-success text-center" role="alert">
+          {successMessage}
         </div>
-    );
-}
+      )}
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-8 col-lg-6">
+          <form ref={form} onSubmit={sendEmail} className='mt-5 mb-5' style={{ padding: '1rem', border: '1px solid #ccc', borderRadius: '8px', background: '#f9f9f9' }}>
+            <div className="mb-3">
+              <label className="form-label" style={{ fontWeight: 'bold' }}>Name</label>
+              <input type="text" name="user_name" className="form-control" required />
+            </div>
+            <div className="mb-3">
+              <label className="form-label" style={{ fontWeight: 'bold' }}>Email</label>
+              <input type="email" name="user_email" className="form-control" required />
+            </div>
+            <div className="mb-3">
+              <label className="form-label" style={{ fontWeight: 'bold' }}>Message</label>
+              <textarea name="message" className="form-control" required style={{ height: '150px' }} />
+            </div>
+            <div className="text-center">
+              <input type="submit" value="Submit" className="btn btn-primary" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};

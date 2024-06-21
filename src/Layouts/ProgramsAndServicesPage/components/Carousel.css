@@ -1,0 +1,28 @@
+.carousel {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .carousel__image-wrapper {
+    text-align: center;
+  }
+  
+  .carousel__arrow {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .carousel__arrow--left {
+    left: 0;
+  }
+  
+  .carousel__arrow--right {
+    right: 0;
+  }
+  

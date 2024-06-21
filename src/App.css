@@ -32,29 +32,328 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
 .custom-button {
-  border: solid;
   border-radius: 50px;
   margin-right: 10px;
-  background-color: #99ccff; /* Example default color */
-  color: white; /* Example default text color */
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  background-color: #99ccff;
+  color: white;
+  transition: background-color 0.3s;
   margin-left: 10px;
   margin-right: 10px;
   height: auto;
-  width: 100px;
+  width: auto;
+  font-weight: bolder;
+  padding: 10px 20px;
+  font-size: 1.25rem;
 }
 
 .custom-button:hover {
-  background-color: #7aa3cc; /* Change to the desired color */
-  color: #ffffff; /* Change text color if necessary */
+  background-color: #7aa3cc;
+  color: #ffffff;
+}
+
+.submit-contactButton {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background: #99ccff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-contactButton:hover {
+  background: #7aa3cc;
 }
 
 .custom-footer-paragraph {
   width: 25%;
 }
+
+.image-background {
+  background-image: url('/public/Images/LayoutPhotos/RUTAphoto.JPG');
+  background-size: cover;
+  background-position: center bottom -185px;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  position: relative;
+}
+
+.image-background::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90%;
+  /* Control the height of the gradient effect */
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+  z-index: 2;
+}
+
+.image-background h1,
+.image-background p,
+.image-background a {
+  position: relative;
+  z-index: 3;
+}
+
+.footer-container {
+  background-color: #99cc99;
+  color: #333;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-logo {
+  height: auto;
+  width: 120px;
+  margin-bottom: 10px;
+}
+
+.footer-social-media a {
+  margin: 0 10px;
+  color: #333;
+  font-size: 24px;
+}
+
+.footer-signup p {
+  margin-bottom: 10px;
+}
+
+.footer-signup input {
+  margin-right: 10px;
+  padding: 5px;
+}
+
+.footer-signup button {
+  background-color: #667;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.footer-nav {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.footer-nav a {
+  padding: 0 15px;
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.footer-nav a:hover {
+  color: #666;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.footer-bottom a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.social-icon {
+  cursor: pointer;
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 768px) {
+
+  .footer-top,
+  .footer-nav {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.footer-nav a {
+  padding: 5px;
+}
+
+.image-container {
+  width: 50%;
+  /* Adjust as needed */
+  height: 50%;
+  /* Adjust as needed */
+  overflow: hidden;
+  /* Ensures the image remains within the container */
+}
+
+.circular-image {
+  width: 90%;
+  /* Ensures the image takes up the full width of its container */
+  height: auto;
+  /* Maintains aspect ratio */
+  border-radius: 50%;
+  /* Makes the image circular */
+}
+
+.container-background {
+  background-color: rgba(255, 255, 153, 0.5);
+  /* Set your desired background color */
+  padding: 20px;
+  /* Optional: Add padding for better spacing */
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+/* styles.css */
+@keyframes successFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.success-message {
+  text-align: center;
+  color: green;
+  margin-bottom: 1rem;
+  animation: successFadeIn 0.5s ease-in-out;
+}
+
+.submit-contactButton {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background: #99ccff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-contactButton:hover {
+  background: #7aa3cc;
+}
+
+.nav-item {
+  position: relative;
+}
+
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 160px;
+}
+
+.dropdown-item {
+  width: 100%;
+}
+
+.dropdown-item .nav-link {
+  padding: 10px 15px;
+}
+
+.dropdown-item .nav-link:hover {
+  background-color: #f1f1f1;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* navbar.css */
+.nav-link.active-nav-link {
+  font-weight: bold;
+}
+
+.dropdown-item.active-nav-link {
+  background-color: white !important; /* Ensure dropdown items have the same active style */
+}
+
+/* navbar.css */
+.nav-link.active-nav-link {
+  font-weight: bold;
+  color: #ffff99 !important;
+}
+
+.dropdown-item {
+  color: black !important;
+  background-color: white; /* or any desired background color */
+  padding: 10px 15px;
+}
+
+.dropdown-item:hover {
+  background-color: lightgray !important;
+}
+
+.dropdown-item.active {
+  color: #7aa3cc !important;
+  font-weight: bold;
+  background-color: white !important; /* or keep it the same as default */
+}
+
+.getInvolved-img {
+  width: 100%;
+  max-width: 1000px;
+}
+
+
+
+
